@@ -25,6 +25,9 @@ function route_auth($method, $path, $auth, $routeFunction) {
      * 1. Maybe you will have to trim the $path first.
      * 2. Create a multi dimensional array (suggestion: $routes[$method][$path]) and store the authFunction and routeFunction Lambdas as one array.
      */
+    $path = trim($path, "/");
+    $routes[$method][$path]["auth"] = $auth;
+    $routes[$method][$path]["function"] = $function;
 }
 
 function call_route($method, $path) {
